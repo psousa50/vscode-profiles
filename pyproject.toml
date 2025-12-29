@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vscode-profiles"
+version = "0.1.0"
+description = "Declarative VS Code profile extension manager"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+vscode-profiles = "vscode_profiles.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vscode_profiles"]
