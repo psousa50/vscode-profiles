@@ -7,26 +7,26 @@ VS Code profiles are completely isolated. When you want to add an extension to m
 ## Installation
 
 ```bash
-pipx install .
+uv sync
 ```
 
 ## Usage
 
 ```bash
 # Sync a profile to match the config
-vscode-profiles sync Python
+uv run vscode-profiles sync Python
 
 # Sync all profiles
-vscode-profiles sync --all
+uv run vscode-profiles sync --all
 
 # Show what would change (dry run)
-vscode-profiles diff Python
+uv run vscode-profiles diff Python
 
 # List current extensions in a profile
-vscode-profiles list Python
+uv run vscode-profiles list Python
 
 # Export current profile to config format
-vscode-profiles export Python
+uv run vscode-profiles export Python
 ```
 
 ## Config File
