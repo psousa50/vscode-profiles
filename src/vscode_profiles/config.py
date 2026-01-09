@@ -17,6 +17,7 @@ class SetConfig:
 class ProfileConfig:
     sets: list[str] = field(default_factory=list)
     extensions: list[str] = field(default_factory=list)
+    disabled: bool = False
 
 
 @dataclass
@@ -57,6 +58,7 @@ def load_config(path: Path = DEFAULT_CONFIG_PATH) -> Config:
         profiles[name] = ProfileConfig(
             sets=profile_data.get("sets", []),
             extensions=profile_data.get("extensions", []),
+            disabled=profile_data.get("disabled", False),
         )
 
     return Config(sets=sets, profiles=profiles)

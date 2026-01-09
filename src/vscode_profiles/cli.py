@@ -40,7 +40,10 @@ def sync(ctx: click.Context, profile: str | None, sync_all: bool) -> None:
     except ConfigError as e:
         raise click.ClickException(str(e))
 
-    profiles_to_sync = list(config.profiles.keys()) if sync_all else [profile]
+    if sync_all:
+        profiles_to_sync = [name for name, p in config.profiles.items() if not p.disabled]
+    else:
+        profiles_to_sync = [profile]
 
     for profile_name in profiles_to_sync:
         try:
